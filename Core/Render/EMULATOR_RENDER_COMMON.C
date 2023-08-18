@@ -135,7 +135,7 @@ unsigned short s_lastSemiTrans = 0xFFFF;
 unsigned short s_lastPolyType = 0xFFFF;
 
 #if defined(USE_32_BIT_ADDR)
-uintptr_t actualTerminator[2] = { -1, 0 };
+uintptr_t actualTerminator[2] = { (uintptr_t)-1, (uintptr_t)0};
 uintptr_t terminatorOT[2] = { (uintptr_t)&actualTerminator, 0};
 #else
 unsigned int actualTerminator = -1;
@@ -1026,6 +1026,10 @@ extern unsigned short resultTouchKeysPressed;
 
 void Emulator_DrawTouchUI()
 {
+#if defined(_WINDOWS)
+    g_DisableTouchUI = 1;
+#endif
+
 	if (g_DisableTouchUI)
 	{
 		return;

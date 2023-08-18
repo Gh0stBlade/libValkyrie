@@ -51,14 +51,14 @@ int VSync(int mode)
 	currentTime = Emulator_GetTicks();
 
 	if (mode < 0)
-		return Emulator_GetTicks() - g_swapTime;
+		return (int)(Emulator_GetTicks() - g_swapTime);
 
 	if (mode == 0)
 	{
 		if (vsync_callback != NULL)
 			vsync_callback();
 
-		int64_t elapsedTime = (currentTime - lastTime) * 2.354f;
+		int64_t elapsedTime = (int64_t)(((float)currentTime - (float)lastTime) * 2.354f);
 		
 		if (vsyncDelay == 0)
 		{
@@ -72,13 +72,13 @@ int VSync(int mode)
 			vsyncDelay = 0;
 		}
 
-		return elapsedTime;
+		return (int)elapsedTime;
 	}
 	else if (mode > 0)
 	{
 	}
 
-	return Emulator_GetTicks();
+	return (int)Emulator_GetTicks();
 }
 
 int VSyncCallback(void(*f)(void))

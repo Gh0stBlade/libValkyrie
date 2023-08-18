@@ -337,6 +337,8 @@ int32_t ADSR(struct Channel* channel)
         break;
     }
     }
+
+    return 0;
 }
 
 int32_t clamp(int32_t value)
@@ -559,7 +561,6 @@ void initADSR()
 
 void fillVAG(struct Channel* channel, int32_t count, int32_t ns)
 {
-    int32_t i;
     int32_t posInc = channel->pitch;
     int32_t channelIndex = channel - channelList;
 

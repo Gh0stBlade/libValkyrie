@@ -137,7 +137,7 @@ extern int gte_ldlzc(int input);
 	IR3 = ((short*)r0)[6];
 
 #define gte_lddp( r0 ) \
-	IR0 = r0
+	IR0 = (short)r0
 
 #define gte_ldsxy0( r0 ) __asm__ volatile (			\
 	"mtc2	%0, $12"					\
@@ -999,13 +999,13 @@ extern int gte_ldlzc(int input);
 	((short*)r0)[6] = IR3;
 
 #define gte_stbv( r0 )       \
-	((char*)r0)[0] = IR1;   \
-	((char*)r0)[1] = IR2;   \
+	((char*)r0)[0] = (char)IR1;   \
+	((char*)r0)[1] = (char)IR2;   \
 
 #define gte_stcv( r0 )      \
-	((char*)r0)[0] = IR1;   \
-	((char*)r0)[1] = IR2;   \
-	((char*)r0)[2] = IR3;   \
+	((char*)r0)[0] = (char)IR1;   \
+	((char*)r0)[1] = (char)IR2;   \
+	((char*)r0)[2] = (char)IR3;   \
 
 #define gte_strgb( r0 )			 \
 	((int*)r0)[0] = RGB0;        \

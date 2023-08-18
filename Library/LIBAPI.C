@@ -64,7 +64,7 @@ long GetRCnt(long spec)//(F)
 		return 0;
 	}
 
-	return counters[spec].cycle;
+	return (long)counters[spec].cycle;
 }
 
 long ResetRCnt(long spec)//(F)
@@ -90,7 +90,7 @@ long StartRCnt(long spec)//(F)
 	{
 		counters[spec].timerIndex = spec;
 #if defined(UWP_SDL2) || defined(SDL2)
-		counters[spec].startTick = Emulator_GetTicks();
+		counters[spec].startTick = (unsigned int)Emulator_GetTicks();
 
 #if defined(UWP) && 0
 		unsigned int interval = counters[spec].target >> 5;

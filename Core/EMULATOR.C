@@ -2461,9 +2461,9 @@ unsigned int Emulator_GetFPS()
 #if defined(SDL2)
 #define FPS_INTERVAL 1.0
 
-	static unsigned int lastTime = Emulator_GetTicks();
-	static unsigned int currentFps = 0;
-	static unsigned int passedFrames = 0;
+	static int64_t lastTime = Emulator_GetTicks();
+	static int64_t currentFps = 0;
+	static int64_t passedFrames = 0;
 
 	passedFrames++;
 	if (lastTime < Emulator_GetTicks() - FPS_INTERVAL * 1000)
@@ -2473,7 +2473,7 @@ unsigned int Emulator_GetFPS()
 		passedFrames = 0;
 	}
 
-	return currentFps;
+	return (unsigned int)currentFps;
 #else
 	return 0;
 #endif

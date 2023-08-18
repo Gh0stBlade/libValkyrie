@@ -509,7 +509,7 @@ void SetSprt(SPRT* p)
 
 void SetDumpFnt(int id)
 {
-	if (id >= 0 && fontStreamCount >= id)
+	if (id >= 0 && (int)fontStreamCount >= id)
 	{
 		fontCurrentStream = id;
 		//sw v0, GPU_printf///@FIXME?

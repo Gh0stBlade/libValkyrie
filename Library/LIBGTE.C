@@ -3869,8 +3869,6 @@ MATRIX* MulMatrix(MATRIX* m0, MATRIX* m1)
 
 MATRIX* MulMatrix2(MATRIX* m0, MATRIX* m1)
 {
-    VECTOR v;
-
     gte_SetRotMatrix(m0);
 
     int t0 = ((unsigned short*)m1)[0];
