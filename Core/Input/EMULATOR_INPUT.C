@@ -37,7 +37,7 @@ void Emulator_AddController(unsigned int index)
 	}
 }
 
-void Emulator_InitialiseSDLInput(SDL_GameController** pad, const unsigned char** kbState, int isDebugInput)
+void Emulator_InitialiseSDLInput(const unsigned char** kbState, int isDebugInput)
 {
 	if (isDebugInput == TRUE && g_initialisedPadSubsystem == TRUE)
 	{
@@ -176,7 +176,7 @@ void UpdateGameControllerAnalogInput(SDL_GameController* pad, void* analogR, voi
 #define SDL_MAX 32767
 
 	///@FIXME 0 is not exactly 0x80 it's 0x7F!
-#define TRANSLATE(x) ((PSX_MAX - PSX_MIN) * (x - SDL_MIN) / (SDL_MAX - SDL_MIN)) + PSX_MIN
+#define TRANSLATE(x) (unsigned char)((PSX_MAX - PSX_MIN) * (x - SDL_MIN) / (SDL_MAX - SDL_MIN)) + PSX_MIN
 
 	struct Analog
 	{

@@ -172,14 +172,14 @@ void Emulator_AddSplit(int semiTrans, int page, TextureID textureId)
 		return;
 	}
 
-	curSplit->vCount = g_vertexIndex - curSplit->vIndex;
-	curSplit->iCount = g_indicesIndex - curSplit->iIndex;
+	curSplit->vCount = (unsigned short)(g_vertexIndex - curSplit->vIndex);
+	curSplit->iCount = (unsigned short)(g_indicesIndex - curSplit->iIndex);
 
 	struct VertexBufferSplit* split = &g_splits[++g_splitIndex];
 
 	split->textureId = textureId;
-	split->vIndex = g_vertexIndex;
-	split->iIndex = g_indicesIndex;
+	split->vIndex = (unsigned short)g_vertexIndex;
+	split->iIndex = (unsigned short)g_indicesIndex;
 	split->vCount = 0;
 	split->iCount = 0;
 	split->blendMode = curBlendMode;
@@ -192,9 +192,9 @@ void Emulator_MakeIndex(int indexCount)
 
 	for (int i = 0; i < indexCount; i += 3)
 	{
-		g_indexBuffer[g_indicesIndex + 0] = split->vCount + split->vIndex + i + 0;
-		g_indexBuffer[g_indicesIndex + 1] = split->vCount + split->vIndex + i + 1;
-		g_indexBuffer[g_indicesIndex + 2] = split->vCount + split->vIndex + i + 2;
+		g_indexBuffer[g_indicesIndex + 0] = (unsigned short)(split->vCount + split->vIndex + i + 0);
+		g_indexBuffer[g_indicesIndex + 1] = (unsigned short)(split->vCount + split->vIndex + i + 1);
+		g_indexBuffer[g_indicesIndex + 2] = (unsigned short)(split->vCount + split->vIndex + i + 2);
 
 		g_indicesIndex += 3;
 	}
@@ -202,8 +202,6 @@ void Emulator_MakeIndex(int indexCount)
 
 void Emulator_MakeTriangle()
 {
-	struct VertexBufferSplit* split = &g_splits[g_splitIndex];
-
 	g_vertexBuffer[g_vertexIndex + 5] = g_vertexBuffer[g_vertexIndex + 3];
 	g_vertexBuffer[g_vertexIndex + 3] = g_vertexBuffer[g_vertexIndex + 0];
 	g_vertexBuffer[g_vertexIndex + 4] = g_vertexBuffer[g_vertexIndex + 2];
@@ -217,8 +215,6 @@ int ParsePrimitive(uintptr_t primPtr, int code)
 	int textured = (code & 0x4) != 0;
 
 	int blend_mode = 0;
-
-	int dr_tpage = 0;
 
 	if (textured)
 	{
@@ -324,7 +320,7 @@ int ParsePrimitive(uintptr_t primPtr, int code)
 
 			g_vertexIndex += 6;
 #endif
-			int primitive_size = sizeof(IBLK_FILL);
+			primitive_size = sizeof(IBLK_FILL);
 
 			return primitive_size;
 		}
@@ -551,8 +547,8 @@ int ParsePrimitive(uintptr_t primPtr, int code)
 	}
 	case 0x48: // TODO (unused)
 	{
-		ILINE_F3* poly = (ILINE_F3*)primPtr;
-		/*
+        /*ILINE_F3* poly = (ILINE_F3*)primPtr;
+		
 					for (int i = 0; i < 2; i++)
 					{
 						Emulator_AddSplit(POLY_TYPE_LINES, semi_transparent, activeDrawEnv.tpage, whiteTexture);
@@ -844,8 +840,8 @@ int ParseLinkedPrimitiveList(uintptr_t packetStart, uintptr_t packetEnd)
 
 		primitiveTag = (IP_TAG*)currentAddress;
 
-		g_splits[g_splitIndex].vCount = g_vertexIndex - g_splits[g_splitIndex].vIndex;
-		g_splits[g_splitIndex].iCount = g_indicesIndex - g_splits[g_splitIndex].iIndex;
+		g_splits[g_splitIndex].vCount = (unsigned short)(g_vertexIndex - g_splits[g_splitIndex].vIndex);
+		g_splits[g_splitIndex].iCount = (unsigned short)(g_indicesIndex - g_splits[g_splitIndex].iIndex);
 	}
 
 	return lastSize;
@@ -959,8 +955,8 @@ void Emulator_AggregatePTAGsToSplits(unsigned int* p, int singlePrimitive)
 		// single primitive
 		ParsePrimitive(currentAddress, primitiveTag->code);
 		
-		g_splits[g_splitIndex].vCount = g_vertexIndex - g_splits[g_splitIndex].vIndex;
-		g_splits[g_splitIndex].iCount = g_indicesIndex - g_splits[g_splitIndex].iIndex;
+		g_splits[g_splitIndex].vCount = (unsigned short)(g_vertexIndex - g_splits[g_splitIndex].vIndex);
+		g_splits[g_splitIndex].iCount = (unsigned short)(g_indicesIndex - g_splits[g_splitIndex].iIndex);
 	}
 	else
 	{
@@ -1203,10 +1199,10 @@ void Emulator_BlitVRAM()
 		b = activeDispEnv.disp.h / 8 + t;
 	}
 #else
-	u_char l = activeDispEnv.disp.x / 8;
-	u_char t = activeDispEnv.disp.y / 8;
-	u_char r = activeDispEnv.disp.w / 8 + l;
-	u_char b = activeDispEnv.disp.h / 8 + t;
+	u_char l = (u_char)(activeDispEnv.disp.x / 8);
+	u_char t = (u_char)(activeDispEnv.disp.y / 8);
+	u_char r = (u_char)(activeDispEnv.disp.w / 8 + l);
+	u_char b = (u_char)(activeDispEnv.disp.h / 8 + t);
 #endif
 
 	struct Vertex blit_vertices[] =

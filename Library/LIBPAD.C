@@ -31,7 +31,7 @@ void PadInitDirect(unsigned char* pad1, unsigned char* pad2)
 	padRumbleData[0] = NULL;
 	padRumbleData[1] = NULL;
 
-	Emulator_InitialiseSDLInput(&padHandle[0], &keyboardState, FALSE);
+	Emulator_InitialiseSDLInput(&keyboardState, FALSE);
 #endif
 }
 

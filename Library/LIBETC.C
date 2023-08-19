@@ -26,7 +26,7 @@ int StopCallback(void)
 void PadInit(int mode)
 {
 #if defined(SDL2)
-	Emulator_InitialiseSDLInput(&padHandleDebug[0], &keyboardStateDebug, TRUE);
+	Emulator_InitialiseSDLInput(&keyboardStateDebug, TRUE);
 #endif
 }
 

@@ -14,7 +14,7 @@ extern unsigned char* padDataDebug[];
 #include <SDL.h>
 #endif
 
-extern void Emulator_InitialiseSDLInput(SDL_GameController** pad, const unsigned char** kbState, int isDebugInput);
+extern void Emulator_InitialiseSDLInput(const unsigned char** kbState, int isDebugInput);
 extern void Emulator_AddController(unsigned int index);
 
 extern SDL_GameController* padHandle[];

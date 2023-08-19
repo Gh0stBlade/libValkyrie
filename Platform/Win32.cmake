@@ -11,5 +11,5 @@ endif()
 
 include_directories(${EXTERN_LIB_PATH}/SDL/Include)
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
-#target_compile_options(${PROJECT_NAME} PRIVATE /W4 /WX)
+target_compile_options(${PROJECT_NAME} PRIVATE /WX)
 endif()
