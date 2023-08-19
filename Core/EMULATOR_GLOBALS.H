@@ -35,5 +35,6 @@ extern unsigned char* padData[];
 extern unsigned char* padRumbleData[];
 
 extern int padAllowCommunication;
+extern int g_DisableTouchUI;
 
 #endif

@@ -1467,6 +1467,11 @@ int Emulator_IsPointInSquare(int x, int y, struct Quad* q)
 
 void Emulator_HandleTouchEvent(int x, int y)
 {
+    if (g_DisableTouchUI)
+    {
+        return;
+    }
+
 	int rx = (x * 512) / windowWidth;
 	int ry  = (y * 240) / windowHeight;
 
