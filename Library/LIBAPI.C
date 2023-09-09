@@ -1,6 +1,6 @@
 #include "LIBAPI.H"
 
-#if !defined(__ANDROID__)&& !defined(SN_TARGET_PSP2) & !defined(_XBOX)
+#if !defined(__ANDROID__)&& !defined(SN_TARGET_PSP2) & !defined(_XBOX) && !defined(__linux__)
 #include <thread>
 #endif
 
