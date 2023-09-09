@@ -1,11 +1,7 @@
 #ifndef EMULATOR_ARCHITECTURE_SETUP_H
 #define EMULATOR_ARCHITECTURE_SETUP_H
 
-#ifdef __cplusplus
-#include <cstdint>
-#else
 #include <stdint.h>
-#endif
 
 #define STATIC_ASSERT(x, y) static_assert(x, y);
 
