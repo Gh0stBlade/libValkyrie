@@ -5,7 +5,7 @@
 
 #if !defined(NO_BOUNTY_LIST_EXPORT)
 
-#include <iostream>
+#include <stdio.h>
 
 #define MAX_NUM_BOUNTIES 4096
 
