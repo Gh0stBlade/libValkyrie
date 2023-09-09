@@ -7,7 +7,9 @@
 
 #if defined(__linux__)
 ///@FIXME unsure why this doesn't work....
-
+#define GAME_X86
+#define VALKYRIE_X86
+#define GAME_ARCH_NAME "32-bit"
 #else
 #if (INTPTR_MAX == INT64_MAX)
 #define GAME_X64
