@@ -80,4 +80,6 @@ ${PROJECT_NAME} PROPERTIES FOLDER "Libs/Emulator"
 )
 endif()
 
+if(NOT UNIX)
 add_subdirectory(Shaders)
+endif()

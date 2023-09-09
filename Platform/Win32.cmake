@@ -9,7 +9,7 @@ if(Vulkan_FOUND)
 include_directories(${Vulkan_INCLUDE_DIR})
 endif()
 
-include_directories(${EXTERN_LIB_PATH}/SDL/Include)
+include_directories(${EXTERN_LIB_PATH}/SDL/include)
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 target_compile_options(${PROJECT_NAME} PRIVATE /WX)
 endif()

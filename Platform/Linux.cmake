@@ -3,7 +3,7 @@ if(UNIX AND NOT(ANDROID) AND NOT(EMSCRIPTEN) AND NOT (PLATFORM_NX_ARM) AND NOT (
 #Find libs
 find_package(OpenGL REQUIRED)
 
-include_directories(${EXTERN_LIB_PATH}/SDL/Include)
+include_directories(${EXTERN_LIB_PATH}/SDL/include)
 
 set(PSX_LIB libValkyrie.a)
 
