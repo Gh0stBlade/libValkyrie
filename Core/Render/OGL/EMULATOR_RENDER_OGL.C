@@ -6,7 +6,7 @@
 
 #if defined(OGL)
 
-#if defined(__APPLE__)
+#if defined(__APPLE__) || defined(__linux__)
 #include <SDL_opengl.h>
 #else
 #include <gl/GL.h>
