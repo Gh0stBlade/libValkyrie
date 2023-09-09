@@ -6,6 +6,7 @@ find_package(OpenGL REQUIRED)
 include_directories(${EXTERN_LIB_PATH}/SDL/include)
 
 set(PSX_LIB libValkyrie.a)
+set(CMAKE_CXX_STANDARD 11)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-narrowing")
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -Wno-narrowing")
