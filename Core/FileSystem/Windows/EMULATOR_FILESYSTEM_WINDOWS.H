@@ -3,7 +3,7 @@
 
 #include "Core/Setup/Platform/EMULATOR_PLATFORM_SETUP.H"
 
-#if defined(_WIN32) || defined(_WIN64) || defined(__APPLE__)
+#if defined(_WIN32) || defined(_WIN64) || defined(__APPLE__) || defined(__linux__)
 extern void Emulator_OpenReadWIN(char* fileName, void* buff, int size);
 extern void Emulator_OpenReadFPWIN(const char* filePath, void* buff, int size);
 extern void Emulator_GetFileSizeWIN(const char* filePath, int* outSize);

@@ -4,6 +4,6 @@ dir=${dir%/*}
 dir=${dir%/*}
 dir=${dir%/*}
 cd ${dir}
-cmake -DCMAKE_BUILD_TYPE=Release . -B${dir}/Build_Linux/
-cd ${dir}/Build_Linux/
+cmake -DCMAKE_BUILD_TYPE=Debug . -B${dir}/Build/Build_Linux/
+cd ${dir}/Build/Build_Linux/
 cmake --build .
