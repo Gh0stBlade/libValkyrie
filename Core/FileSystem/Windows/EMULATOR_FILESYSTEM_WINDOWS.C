@@ -17,6 +17,10 @@ void Emulator_ReadFileWIN(const char* filePath, void* buff, int size)
 		fread(buff, size, 1, f);
 		fclose(f);
 	}
+    else
+    {
+        printf("Failed to open file: %s\n", filePath);
+    }
 }
 
 void Emulator_OpenReadWIN(char* fileName, void* buff, int size)
@@ -44,6 +48,10 @@ void Emulator_GetFileSizeWIN(const char* filePath, int* outSize)
 		outSize[0] = ftell(f);
 		fclose(f);
 	}
+    else
+    {
+        printf("Failed to open file: %s\n", filePath);
+    }
 }
 
 #endif
