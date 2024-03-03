@@ -13,7 +13,7 @@
 
 /* Game version */
 #define GAME_MAJOR_VERSION (0)
-#define GAME_MINOR_VERSION (6)
+#define GAME_MINOR_VERSION (7)
 
 /* Compile date and time */
 #define GAME_COMPILE_DATE (__DATE__)
